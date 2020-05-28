@@ -34,35 +34,6 @@
     embedded
     arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
   >
-  <!-- vidhandler component -->
-<script>
-  AFRAME.registerComponent('vidhandler', {
-  schema: {
-    target: {type: 'string'}
-  },
-  init: function() {
-      this.videoNodes = document.querySelectorAll(this.data.target)
-  },
-  tick: function() {
-      if (this.el.object3D.visible == true) {
-          if (!this.toggle) {
-              this.toggle = true;
-              for (let i = 0; i < this.videoNodes.length; i++) {
-                  this.videoNodes[i].play();
-              } 
-          }
-      } else {
-          if (this.toggle) {
-            for (let i = 0; i < this.videoNodes.length; i++) {
-              this.videoNodes[i].pause();
-            }
-            this.toggle = false;
-          }
-      }
-  }
-  });
-  </script>
-  
   <!-- assets for vidhandler -->
   <a-assets >
       <video crossOrigin="Anonymous" Id="vid" 
@@ -91,4 +62,34 @@
     </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
+
+ <!-- vidhandler component -->
+<script>
+  AFRAME.registerComponent('vidhandler', {
+  schema: {
+    target: {type: 'string'}
+  },
+  init: function() {
+      this.videoNodes = document.querySelectorAll(this.data.target)
+  },
+  tick: function() {
+      if (this.el.object3D.visible == true) {
+          if (!this.toggle) {
+              this.toggle = true;
+              for (let i = 0; i < this.videoNodes.length; i++) {
+                  this.videoNodes[i].play();
+              } 
+          }
+      } else {
+          if (this.toggle) {
+            for (let i = 0; i < this.videoNodes.length; i++) {
+              this.videoNodes[i].pause();
+            }
+            this.toggle = false;
+          }
+      }
+  }
+  });
+  </script>
+  
 </body>
