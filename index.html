@@ -43,7 +43,7 @@
   
   <a-assets>
     <!-- Load video that is hosted on another server. See 'src' attribute: -->
-    <video preload="none" id="chroma" response-type="arraybuffer" loop="false" crossorigin webkit-playsinline playsinline controls>
+    <video crossOrigin="Anonymous" preload="auto" id="chroma" response-type="arraybuffer" loop="true" crossorigin webkit-playsinline playsinline controls>
       <source  src="https://roberlazaro.github.io/ImageWebAR/Assets/Videos/Dani1.mp4">
   </video>
   </a-assets>
@@ -58,7 +58,7 @@
       smoothThreshold="5"
       >
       <!-- add non transparent video (.mp4) -->
-      <a-plane  position='0 .2 0' width='100' height='100' rotation="-90 0 0" material='src:#vid'></a-plane>
+      <a-plane  position='0 .2 0' width='100' height='100' rotation="-90 0 0" material='src:#chroma'></a-plane>
     </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
