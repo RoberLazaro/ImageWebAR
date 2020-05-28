@@ -22,13 +22,7 @@
   }
 </style>
 
-<body style="margin : 0px; overflow: hidden;">
-
-  <div class="overlay">
-    <button>
-     START   
-    </button>
-   </div> 
+<body style="margin : 0px; overflow: hidden;"> 
 
   <!-- minimal loader shown until image descriptors are loaded -->
   <div class="arjs-loader">
@@ -42,35 +36,50 @@
   >
   <a-assets>
     <!-- Load video that is hosted on another server. See 'src' attribute: -->
-    <video  id="video" autoplay="true" loop="true" src="https://roberlazaro.github.io/ImageWebAR/Assets/Videos/Dani1.mp4"></video>
+    <video preload="none" id="chroma" response-type="arraybuffer" loop="false" crossorigin webkit-playsinline playsinline controls>
+      <source  src="https://roberlazaro.github.io/ImageWebAR/Assets/Videos/Dani1.mp4">
+  </video>
   </a-assets>
     <!-- we use cors proxy to avoid cross-origin problems -->
     <a-nft
       type="nft"
-      url="https://roberlazaro.github.io/ImageWebAR/Assets/NFT/retiro/retiro300"
+      url="https://roberlazaro.github.io/ImageWebAR/Assets/NFT/retiro300"
       smooth="true"
       smoothCount="10"
       smoothTolerance=".01"
       smoothThreshold="5"
     >
     <a-entity scale="1 1 1" rotation="-90 0 0">
-      <a-video play-on-scan src="#video"></a-video>
+      <a-video play-on-scan src="#chroma"></a-video>
     </a-entity>
     </a-nft>
-    <a-entity camera>
-      <a-entity 
-      position="0 0 0">
-  </a-entity>
-</a-entity>
+
+    <a-entity camera></a-entity>
   </a-scene>
 
   <script>
-    const overlay = document.querySelector(".overlay");
-    const startBtn = overlay.querySelector("button");
-    console.log(startBtn);
-    startBtn.addEventListener("click", function(){
-      overlay.style.display = "none";    
+
+    // Video Handler
+              
+    AFRAME.registerComponent('video-vidhandler', {
+      init: function() {
+        this.toggle = false;
+        this.vid = document.querySelector("#chroma");
+        this.vid.pause();
+      },
+      tick: function() {
+        if (this.el.object3D.visible == true) {
+          if (!this.toggle) {
+              this.toggle = true;
+              this.vid.play();
+          }
+        } else {
+          this.toggle = false;
+          this.vid.pause();
+        }
+      }
     });
+  
   </script>
 
 </body>
