@@ -23,6 +23,13 @@
 </style>
 
 <body style="margin : 0px; overflow: hidden;">
+
+  <div class="overlay">
+    <button>
+     START   
+    </button>
+   </div> 
+
   <!-- minimal loader shown until image descriptors are loaded -->
   <div class="arjs-loader">
     <div>Loading, please wait...</div>
@@ -33,22 +40,33 @@
     embedded
     arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
   >
+  <a-assets>
+    <!-- Load video that is hosted on another server. See 'src' attribute: -->
+    <video  id="video" autoplay="false" loop="true" src="https://roberlazaro.github.io/ImageWebAR/Assets/Videos/Dani1.mp4"></video>
+  </a-assets>
     <!-- we use cors proxy to avoid cross-origin problems -->
     <a-nft
       type="nft"
-      url="https://roberlazaro.github.io/ImageWebAR/Nft/retiro/retiro300"
+      url="https://roberlazaro.github.io/ImageWebAR/Assets/NFT/retiro/retiro300"
       smooth="true"
       smoothCount="10"
       smoothTolerance=".01"
       smoothThreshold="5"
     >
-      <a-entity
-        gltf-model="https://roberlazaro.github.io/ImageWebAR/Assets/bernabeu/scene.gltf"
-        scale="2 2 2"
-        position="0 0 0"
-      >
-      </a-entity>
+    <a-entity scale="1 1 1" rotation="-90 0 0">
+      <a-video play-on-scan src="#video"></a-video>
+    </a-entity>
     </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
+
+  <script>
+    const overlay = document.querySelector(".overlay");
+    const startBtn = overlay.querySelector("button");
+    console.log(startBtn);
+    startBtn.addEventListener("click", function(){
+      overlay.style.display = "none";    
+    });
+  </script>
+
 </body>
