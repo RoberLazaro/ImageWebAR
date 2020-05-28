@@ -42,7 +42,7 @@
   >
   <a-assets>
     <!-- Load video that is hosted on another server. See 'src' attribute: -->
-    <video  id="video" autoplay="false" loop="true" src="https://roberlazaro.github.io/ImageWebAR/Assets/Videos/Dani1.mp4"></video>
+    <video  id="video" autoplay="true" loop="true" src="https://roberlazaro.github.io/ImageWebAR/Assets/Videos/Dani1.mp4"></video>
   </a-assets>
     <!-- we use cors proxy to avoid cross-origin problems -->
     <a-nft
@@ -57,7 +57,11 @@
       <a-video play-on-scan src="#video"></a-video>
     </a-entity>
     </a-nft>
-    <a-entity camera></a-entity>
+    <a-entity camera>
+      <a-entity 
+      position="0 0 0">
+  </a-entity>
+</a-entity>
   </a-scene>
 
   <script>
