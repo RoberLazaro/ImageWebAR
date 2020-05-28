@@ -43,13 +43,6 @@
     embedded
     arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
   >
-  <!-- assets for vidhandler -->
-  <a-assets >
-      <video crossOrigin="Anonymous" Id="vid" 
-  loop="true"src="https://roberlazaro.github.io/ImageWebAR/Assets/Videos/Dani1.mp4">
-      </video>        
-  </a-assets>
-  
   <a-assets>
     <!-- Load video that is hosted on another server. See 'src' attribute: -->
     <video autoplay type="video/mp4" muted="true" preload="auto" id="chroma" response-type="arraybuffer" loop="true" crossorigin webkit-playsinline playsinline controls>
@@ -67,7 +60,7 @@
       >
       <!-- add non transparent video (.mp4) -->
       <!-- <a-video src="#chroma" position="0 0.5 0" rotation="270 0 0" play="true"></a-video> -->
-      <a-plane scale = "100 50" position='20 20 30' rotation="-90 0 -90" material='transparent:true;src:#chroma' controls></a-plane>
+      <a-plane scale = "100 50" position='20 -30 40' rotation="-90 0 -90" material='transparent:true;src:#chroma' controls></a-plane>
     </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
