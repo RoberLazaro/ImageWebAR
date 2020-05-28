@@ -58,7 +58,6 @@
   </a-assets>
     <!-- we use cors proxy to avoid cross-origin problems -->
     <a-nft
-      vidhandler="target: #vid"
       type="nft"
       url="https://roberlazaro.github.io/ImageWebAR/Assets/NFT/retiro300"
       smooth="true"
@@ -67,7 +66,8 @@
       smoothThreshold="5"
       >
       <!-- add non transparent video (.mp4) -->
-      <a-video src="#chroma" position="0 0.5 0" rotation="270 0 0" play="true"></a-video>
+      <!-- <a-video src="#chroma" position="0 0.5 0" rotation="270 0 0" play="true"></a-video> -->
+      <a-plane scale = "4 2" position='0 0.1 0' rotation="-90 0 0" material='transparent:true;src:#chroma' controls></a-plane>
     </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
